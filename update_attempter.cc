@@ -143,6 +143,7 @@ UpdateAttempter::~UpdateAttempter() {
 }
 
 void UpdateAttempter::Init() {
+  LOG(WARNING) << "M85-LTS. This is LTS version of Chrome OS loading";
   // Pulling from the SystemState can only be done after construction, since
   // this is an aggregate of various objects (such as the UpdateAttempter),
   // which requires them all to be constructed prior to it being used.
