@@ -460,6 +460,8 @@ class UpdateAttempter : public ActionProcessorDelegate,
 
   std::unique_ptr<ActionProcessor> processor_;
 
+  ActionProcessor aux_processor_;
+
   // External state of the system outside the update_engine process
   // carved out separately to mock out easily in unit tests.
   SystemState* system_state_;
