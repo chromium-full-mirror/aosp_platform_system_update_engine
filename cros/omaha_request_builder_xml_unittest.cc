@@ -859,4 +859,20 @@ TEST_F(OmahaRequestBuilderXmlTest,
       << request_xml;
 }
 
+TEST_F(OmahaRequestBuilderXmlTest, ExtendedOkayTest) {
+  {
+    OmahaRequestBuilderXml omaha_request{nullptr, false, false, 0, 0, 0, ""};
+    const string request_xml = omaha_request.GetRequest();
+    EXPECT_EQ(1, CountSubstringInString(request_xml, "extended_okay=\"false\""))
+        << request_xml;
+  }
+  {
+    params_.set_extended_okay(true);
+    OmahaRequestBuilderXml omaha_request{nullptr, false, false, 0, 0, 0, ""};
+    const string request_xml = omaha_request.GetRequest();
+    EXPECT_EQ(1, CountSubstringInString(request_xml, "extended_okay=\"true\""))
+        << request_xml;
+  }
+}
+
 }  // namespace chromeos_update_engine
